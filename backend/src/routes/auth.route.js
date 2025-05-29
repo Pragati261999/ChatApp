@@ -1,10 +1,8 @@
 import express from "express";
+import { signup } from "../controllers/auth.controller";
+const router = express.Router();
 
-const router = express.Routers();
 
-
-router.get("/signup", (req, res)=>{
-    res.send("signup Routes");
-})
+router.get("/signup",signup)
 
 export default router;
