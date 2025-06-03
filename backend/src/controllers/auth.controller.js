@@ -1,4 +1,5 @@
 export async function signup (req, res){
+    const {email, password,fullName} =  req.body;
     res.send("signup Routes");
 }
 export async function login (req, res){
