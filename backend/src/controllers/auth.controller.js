@@ -1,18 +1,23 @@
-export async function signup (req, res){
-    const {email, password,fullName} =  req.body;
-    try{
-if(!email || !password || !fullName ){
-    return res.status(400).json({ message: "All fields ar required"});
-}
-    }catch(error){
+export async function signup(req, res) {
+    const { email, password, fullName } = req.body;
+    try {
+        if (!email || !password || !fullName) {
+            return res.status(400).json({ message: "All fields ar required" });
+        }
+        if (password.lenth < 6) {
+            return res.status(400).json({ message: "must be 6 digits "});
+
+        }
+
+    } catch (error) {
 
     }
     res.send("signup Routes");
 }
-export async function login (req, res){
+export async function login(req, res) {
     res.send("login Routes");
 }
 
-export async function logout (req, res){
+export async function logout(req, res) {
     res.send("logout Routes");
 }
