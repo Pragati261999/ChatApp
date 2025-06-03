@@ -5,9 +5,14 @@ export async function signup(req, res) {
             return res.status(400).json({ message: "All fields ar required" });
         }
         if (password.lenth < 6) {
-            return res.status(400).json({ message: "must be 6 digits "});
+            return res.status(400).json({ message: "must be 6 digits " });
 
         }
+        const emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        if (!emailFormat.test(email)) {
+            return res.status(400).json({ message: "invailid mail" });
+        }
+
 
     } catch (error) {
 
