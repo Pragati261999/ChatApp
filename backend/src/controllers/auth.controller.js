@@ -15,11 +15,11 @@ export async function signup(req, res) {
         if (!emailFormat.test(email)) {
             return res.status(400).json({ message: "invailid mail" });
         }
-const existemail = await User.findOne({email});
-if (existemail){
-     return res.status(400).json({ message: "already exist!" });
+        const existemail = await User.findOne({ email });
+        if (existemail) {
+            return res.status(400).json({ message: "already exist!" });
 
-}
+        }
 
     } catch (error) {
 
