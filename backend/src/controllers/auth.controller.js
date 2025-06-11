@@ -1,4 +1,6 @@
-
+import { Profiler } from "react";
+import User from '../models/User.js';
+import jwt from "jsonwebtoken";
 
 
 export async function signup(req, res) {
@@ -21,6 +23,16 @@ export async function signup(req, res) {
 
         }
         const idx = Math.floor(Math.random()*100)+1; 
+
+        const randomavtar  =  `https://avatar.iran.liara.run/public/${idx}.png`;
+        const newuser = new User.create({
+            email,fullName, password, ProfilePic:randomavtar
+        });
+        const token =  jwt.sign({userId:newuser._id}, process.env.JWT_SECRET, {
+            expireIn: "7d"
+        })
+
+        // });
 
     } catch (error) {
 
