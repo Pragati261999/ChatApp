@@ -20,6 +20,7 @@ export async function signup(req, res) {
             return res.status(400).json({ message: "already exist!" });
 
         }
+        const idx = Math.floor(Math.random()*100)+1; 
 
     } catch (error) {
 
