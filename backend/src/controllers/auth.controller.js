@@ -22,22 +22,22 @@ export async function signup(req, res) {
             return res.status(400).json({ message: "already exist!" });
 
         }
-        const idx = Math.floor(Math.random()*100)+1; 
+        const idx = Math.floor(Math.random() * 100) + 1;
 
-        const randomavtar  =  `https://avatar.iran.liara.run/public/${idx}.png`;
+        const randomavtar = `https://avatar.iran.liara.run/public/${idx}.png`;
         const newuser = new User.create({
-            email,fullName, password, ProfilePic:randomavtar
+            email, fullName, password, ProfilePic: randomavtar
         });
-        const token =  jwt.sign({userId:newuser._id}, process.env.JWT_SECRET, {
+        const token = jwt.sign({ userId: newuser._id }, process.env.JWT_SECRET, {
             expireIn: "7d"
         })
-        res.cookie("jwt", token,{
-            maxAge:7 * 24 * 60 *60 *1000,
+        res.cookie("jwt", token, {
+            maxAge: 7 * 24 * 60 * 60 * 1000,
             httpOnly: true,    // prevent xss attacks, 
             sameSite: "strict",
             secure: process.env.NODE_ENV === "production"
         })
-        res.status(201).json({success: true, user: newuser})
+        res.status(201).json({ success: true, user: newuser })
         // });
 
     } catch (error) {
@@ -49,13 +49,17 @@ export async function login(req, res) {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user)
-      return res.status(404).json({ message: 'User not found' });
+        return res.status(404).json({ message: 'User not found' });
 
     // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
-      return res.status(400).json({ message: 'Invalid credentials' });
-
+        return res.status(400).json({ message: 'Invalid credentials' });
+    const token = jwt.sign(
+        { id: user._id, email: user.email },
+        JWT_SECRET,
+        { expiresIn: '1d' }
+    );
 }
 
 export async function logout(req, res) {
