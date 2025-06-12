@@ -46,7 +46,16 @@ export async function signup(req, res) {
     res.send("signup Routes");
 }
 export async function login(req, res) {
-    res.send("login Routes");
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user)
+      return res.status(404).json({ message: 'User not found' });
+
+    // Compare passwords
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch)
+      return res.status(400).json({ message: 'Invalid credentials' });
+
 }
 
 export async function logout(req, res) {
