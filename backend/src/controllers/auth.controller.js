@@ -45,32 +45,8 @@ export async function signup(req, res) {
     }
     res.send("signup Routes");
 }
-export const login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    // Check user existence
-    const user = await User.findOne({ email });
-    if (!user)
-      return res.status(404).json({ message: 'User not found' });
-
-    // Compare passwords
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch)
-      return res.status(400).json({ message: 'Invalid credentials' });
-
-    // Create JWT token
-    const token = jwt.sign(
-      { id: user._id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: '1d' }
-    );
-
-    res.status(200).json({ message: 'Login successful', token, user });
-  } catch (err) {
-    res.status(500).json({ message: 'Server error', error: err.message });
-  }
-};
+export async function login(req, res) {
+}
 export async function logout(req, res) {
     res.send("logout Routes");
 }
