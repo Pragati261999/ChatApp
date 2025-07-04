@@ -8,7 +8,9 @@ import { Routes } from "react-router";
 function App() {
   return (
     <div className='h-screen' data-theme="forest">
-      <Routes></Routes>
+      <Routes>
+        
+      </Routes>
     </div>
   );
 
