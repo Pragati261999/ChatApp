@@ -11,10 +11,12 @@ import NotificationPage from "./pages/NotificationPage";
 import ChatPage from "./pages/ChatPage";
 import CallPage from "./pages/CallPage";
 import OnboardingPage from "./pages/OnboardingPage";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className='h-screen' data-theme="forest">
+      <button onClick={() =>{toast.success('Hello World!')}}>Create a toast</button>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/signup" element={<SignupPage />}></Route>
@@ -24,6 +26,7 @@ function App() {
         <Route path="/chat" element={<ChatPage />}></Route>
         <Route path="/call" element={<CallPage />}></Route>
       </Routes>
+      <Toaster />
     </div>
   );
 
