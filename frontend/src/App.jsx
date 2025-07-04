@@ -14,12 +14,12 @@ import OnboardingPage from "./pages/OnboardingPage";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-
+import { axiosInstance } from "./lib/axios";
 function App() {
   const { data, isLoading, error } = useQuery({
     queryKey: "todos",
     queryFn: async () => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/todos")
+      const res = await axiosInstance.get("https://jsonplaceholder.typicode.com/todos")
       const data = res.json();
       return data;
     },
