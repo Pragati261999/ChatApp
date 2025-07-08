@@ -17,12 +17,13 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "./lib/axios";
 function App() {
   const { data, isLoading, error } = useQuery({
-    queryKey: "todos",
+    queryKey: ["todos"],
     queryFn: async () => {
       const res = await axiosInstance.get("https://jsonplaceholder.typicode.com/todos")
       const data = res.json();
       return data;
     },
+    retry: false,
   });
   console.log("tods data: ", data);
   return (
