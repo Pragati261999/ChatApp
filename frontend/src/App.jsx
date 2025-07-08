@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "./lib/axios";
 function App() {
-  const { data, isLoading, error } = useQuery({
+  const { data:authData, isLoading, error } = useQuery({
     queryKey: ["authUser"],
     queryFn: async () => {
       const res = await axiosInstance.get("/auth/me")
@@ -26,11 +26,12 @@ function App() {
     retry: false,
   });
   console.log("tods data: ", data);
+  const authUser = authData?.user
   return (
     <div className='h-screen' data-theme="forest">
       <button onClick={() => { toast.success('Hello World!') }}>Create a toast</button>
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />}></Route>
         <Route path="/signup" element={<SignupPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/onboard" element={<OnboardingPage />}></Route>
