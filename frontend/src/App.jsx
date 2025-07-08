@@ -17,7 +17,7 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "./lib/axios";
 function App() {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["todos"],
+    queryKey: ["authUser"],
     queryFn: async () => {
       const res = await axiosInstance.get("/auth/me")
       const data = res.json();
