@@ -19,7 +19,7 @@ function App() {
   const { data, isLoading, error } = useQuery({
     queryKey: ["todos"],
     queryFn: async () => {
-      const res = await axiosInstance.get("https://jsonplaceholder.typicode.com/todos")
+      const res = await axiosInstance.get("/auth/me")
       const data = res.json();
       return data;
     },
