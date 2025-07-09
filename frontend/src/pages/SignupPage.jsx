@@ -10,7 +10,7 @@ const SignupPage = () => {
     e.preventDefault()
   }
   return (
-    <div>SignupPage</div>
+    <div className='h-screen flex items-center justify-center p-4 sm:p-6 md:p-8' data-theme="forest">SignupPage</div>
   )
 }
 
