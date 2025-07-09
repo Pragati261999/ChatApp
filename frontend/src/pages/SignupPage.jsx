@@ -5,7 +5,10 @@ const SignupPage = () => {
     fullName: "",
     email: "",
     password:"",
-  })
+  }) ;
+  const handlesubmit = (e) =>{
+    e.preventDefault()
+  }
   return (
     <div>SignupPage</div>
   )
