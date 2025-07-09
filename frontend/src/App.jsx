@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "./lib/axios";
 function App() {
-  const { data:authData, isLoading, error } = useQuery({
+  const { data: authData, isLoading, error } = useQuery({
     queryKey: ["authUser"],
     queryFn: async () => {
       const res = await axiosInstance.get("/auth/me")
@@ -32,15 +32,15 @@ function App() {
       <button onClick={() => { toast.success('Hello World!') }}>Create a toast</button>
       <Routes>
         <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />}></Route>
-        <Route path="/signup" element={<SignupPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/onboard" element={<OnboardingPage />}></Route>
+        <Route path="/signup" element={authUser ? <SignupPage /> : <Navigate to="/" />}></Route>
+        <Route path="/login" element={authUser ? <LoginPage /> : <Navigate to="/" />}></Route>
+        <Route path="/onboard" element={authUser ? <OnboardingPage /> : <Navigate to="/" />}></Route>
         <Route path="/notification" element={<NotificationPage />}></Route>
         <Route path="/chat" element={<ChatPage />}></Route>
         <Route path="/call" element={<CallPage />}></Route>
       </Routes>
       <Toaster />
-    </div>
+    </div >
   );
 
 }
