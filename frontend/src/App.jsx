@@ -25,7 +25,7 @@ function App() {
     },
     retry: false,
   });
-  console.log("tods data: ", data);
+  console.log("tods authData: ", authData);
   const authUser = authData?.user
   return (
     <div className='h-screen' data-theme="forest">
