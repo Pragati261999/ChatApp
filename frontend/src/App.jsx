@@ -35,9 +35,9 @@ function App() {
         <Route path="/signup" element={authUser ? <SignupPage /> : <Navigate to="/" />}></Route>
         <Route path="/login" element={authUser ? <LoginPage /> : <Navigate to="/" />}></Route>
         <Route path="/onboard" element={authUser ? <OnboardingPage /> : <Navigate to="/" />}></Route>
-        <Route path="/notification" element={<NotificationPage />}></Route>
-        <Route path="/chat" element={<ChatPage />}></Route>
-        <Route path="/call" element={<CallPage />}></Route>
+        <Route path="/notification" element={authUser ? <NotificationPage /> : <Navigate to="/" />}></Route>
+        <Route path="/chat" element={authUser ? <ChatPage /> : <Navigate to="/" />}></Route>
+        <Route path="/call" element={authUser ? <CallPage /> : <Navigate to="/" />}></Route>
       </Routes>
       <Toaster />
     </div >
