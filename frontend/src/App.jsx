@@ -32,7 +32,7 @@ function App() {
       <button onClick={() => { toast.success('Hello World!') }}>Create a toast</button>
       <Routes>
         <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />}></Route>
-        <Route path="/signup" element={authUser ? <SignupPage /> : <Navigate to="/" />}></Route>
+        <Route path="/signup" element={!authUser ? <SignupPage /> : <Navigate to="/" />}></Route>
         <Route path="/login" element={authUser ? <LoginPage /> : <Navigate to="/" />}></Route>
         <Route path="/onboard" element={authUser ? <OnboardingPage /> : <Navigate to="/" />}></Route>
         <Route path="/notification" element={authUser ? <NotificationPage /> : <Navigate to="/" />}></Route>
