@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />}></Route>
         <Route path="/signup" element={!authUser ? <SignupPage /> : <Navigate to="/" />}></Route>
-        <Route path="/login" element={authUser ? <LoginPage /> : <Navigate to="/" />}></Route>
+        <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />}></Route>
         <Route path="/onboard" element={authUser ? <OnboardingPage /> : <Navigate to="/" />}></Route>
         <Route path="/notification" element={authUser ? <NotificationPage /> : <Navigate to="/" />}></Route>
         <Route path="/chat" element={authUser ? <ChatPage /> : <Navigate to="/" />}></Route>
