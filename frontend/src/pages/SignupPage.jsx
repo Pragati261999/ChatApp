@@ -7,10 +7,11 @@ const SignupPage = () => {
     email: "",
     password: "",
   });
+  // const { isPending, error, signupMutation } = useSignUp();
   const handlesubmit = (e) => {
     e.preventDefault()
   }
-   const handleSignup = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
     signupMutation(signupData);
   };
@@ -26,7 +27,7 @@ const SignupPage = () => {
               Togetia
             </span>
           </div>
-            <div className="w-full">
+          <div className="w-full">
             <form onSubmit={handleSignup}>
               <div className="space-y-4">
                 <div>
@@ -95,16 +96,17 @@ const SignupPage = () => {
                   </div>
                 </div>
 
-                {/* <button className="btn btn-primary w-full" type="submit">
-                  {isPending ? (
+                <button className="btn btn-primary w-full" type="submit">
+                  Create Account
+                  {/* {isPending ? (
                     <>
                       <span className="loading loading-spinner loading-xs"></span>
                       Loading...
                     </>
                   ) : (
                     "Create Account"
-                  )}
-                </button> */}
+                  )} */}
+                </button>
 
                 <div className="text-center mt-4">
                   <p className="text-sm">
@@ -133,7 +135,7 @@ const SignupPage = () => {
               </p>
             </div>
           </div>
-          </div>
+        </div>
       </div>
     </div>
   )
