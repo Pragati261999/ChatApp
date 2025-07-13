@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, ShipWheelIcon } from "lucide-react"
+import useSignUp from "../hooks/useSignUp";
 
 const SignupPage = () => {
   const [signupData, setsignupData] = useState({
@@ -7,7 +8,7 @@ const SignupPage = () => {
     email: "",
     password: "",
   });
-  // const { isPending, error, signupMutation } = useSignUp();
+  const { isPending, error, signupMutation } = useSignUp();
   const handlesubmit = (e) => {
     e.preventDefault()
   }
