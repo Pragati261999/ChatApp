@@ -60,7 +60,7 @@ const SignupPage = () => {
                     </label>
                     <input
                       type="email"
-                      placeholder="john@gmail.com"
+                      placeholder="Enter your email"
                       className="input input-bordered w-full"
                       value={signupData.email}
                       onChange={(e) => setsignupData({ ...signupData, email: e.target.value })}
@@ -74,7 +74,7 @@ const SignupPage = () => {
                     </label>
                     <input
                       type="password"
-                      placeholder="********"
+                      placeholder="Enter password"
                       className="input input-bordered w-full"
                       value={signupData.password}
                       onChange={(e) => setsignupData({ ...signupData, password: e.target.value })}
