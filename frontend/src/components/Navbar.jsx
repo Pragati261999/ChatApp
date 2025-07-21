@@ -6,5 +6,9 @@ import useLogout from "../hooks/useLogout";
 
 
 const Navbar = () => {
+    const { authUser } = useAuthUser();
+    const location = useLocation();
+    const isChatPage = location.pathname?.startsWith("/chat");
+
 };
 export default Navbar;
