@@ -26,7 +26,9 @@ function App() {
     retry: false,
   });
   console.log("tods authData: ", authData);
-  const authUser = authData?.user
+  const authUser = authData?.user;
+
+  if (isLoading) return <PageLoader />
   return (
     <div className='h-screen' data-theme="forest">
       <button onClick={() => { toast.success('Hello World!') }}>Create a toast</button>
