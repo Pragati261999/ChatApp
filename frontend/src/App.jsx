@@ -38,7 +38,11 @@ function App() {
     <div className='h-screen' data-theme="forest">
       <button onClick={() => { toast.success('Hello World!') }}>Create a toast</button>
       <Routes>
-        <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />}></Route>
+        <Route path="/" element={isAuthenticated && isOnboarded ?(
+          <HomePage />
+        ) : (
+          <Navigate to="/login" />
+        )} />
         <Route path="/signup" element={!isAuthenticated ? <SignupPage /> : <Navigate to="/" />}></Route>
         <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />}></Route>
         <Route path="/onboard" element={isAuthenticated ? <OnboardingPage /> : <Navigate to="/" />}></Route>
