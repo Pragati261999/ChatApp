@@ -15,14 +15,16 @@ export const logout = async () => {
 };
 
 export const getAuthUser = async () => {
-  try {
-    const res = await axiosInstance.get("/auth/me");
-    return res.data;
-  } catch (error) {
-    console.log("Error in getAuthUser:", error);
-    return null;
-  }
+    const token = localStorage.getItem('authToken'); // Ensure token is stored in localStorage or cookies
+    const response = await axios.get('/api/auth/me', {
+        headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        },
+        withCredentials: true, // Include cookies if needed
+    });
+    return response.data;
 };
+
 
 export const completeOnboarding = async (userData) => {
   const response = await axiosInstance.post("/auth/onboarding", userData);

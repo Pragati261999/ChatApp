@@ -12,11 +12,18 @@ dotenv.config();
 const app = express()
 const PORT = process.env.PORT;
 // app.use('/api/auth', authRoutes);
+// app.use(cors({
+//     origin: "http:/localhost:5173",
+//     credentials: true   // allow send cookies
+// }));
 app.use(cors({
-    origin: "http:/localhost:5173",
-    credentials: true   // allow send cookies
+    origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true
 }));
+
 app.use(express.json());
+app.options('*', cors());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);

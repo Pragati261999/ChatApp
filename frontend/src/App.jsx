@@ -16,10 +16,12 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "./lib/axios";
 import useAuthUser from "./hooks/useAuthUser";
+import PageLoader from "./components/PageLoader.jsx";
+
 function App() {
     const { isLoading, authUser} =  useAuthUser();
     const isAuthenticated = Boolean(authUser)
-    const isOnboarded = authUser.isOnboarded
+    const isOnboarded = authUser?.isOnboarded
 
   // const { data: authData, isLoading, error } = useQuery({
   //   queryKey: ["authUser"],
