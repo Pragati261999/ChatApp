@@ -1,5 +1,7 @@
 import User from '../models/User.js';
 import jwt from "jsonwebtoken";
+import { upsertStreamUser } from "../lib/stream.js";
+
 
 
 // export async function signup(req, res) {
@@ -117,6 +119,7 @@ export async function login(req, res) {
     }
 
     const user = await User.findOne({ email });
+    console.log("User found during login:", user);
     if (!user) return res.status(401).json({ message: "Invalid email or password" });
 
     const isPasswordCorrect = await user.matchPassword(password);
@@ -133,7 +136,7 @@ export async function login(req, res) {
       secure: process.env.NODE_ENV === "production",
     });
 
-    res.status(200).json({ success: true, user });
+    res.status(200).json({ success: true, user, token });
   } catch (error) {
     console.log("Error in login controller", error.message);
     res.status(500).json({ message: "Internal Server Error" });
