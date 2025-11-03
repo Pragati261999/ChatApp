@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, ShipWheelIcon } from "lucide-react"
+import { useNavigate } from "react-router-dom";
 import useSignUp from "../hooks/useSignUp";
 
 const SignupPage = () => {
@@ -9,12 +10,18 @@ const SignupPage = () => {
     password: "",
   });
   const { isPending, error, signupMutation } = useSignUp();
+  const navigate = useNavigate(); // Add useNavigate hook
+
   const handlesubmit = (e) => {
     e.preventDefault()
   }
   const handleSignup = (e) => {
     e.preventDefault();
-    signupMutation(signupData);
+    signupMutation(signupData, {
+      onSuccess: () => {
+        navigate("/onboarding"); // Redirect to onboarding page on success
+      },
+    });
   };
   return (
     <div className='h-screen flex items-center justify-center p-4 sm:p-6 md:p-8' data-theme="forest">

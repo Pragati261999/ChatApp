@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ShipWheelIcon } from "lucide-react";
 import { Link } from "react-router";
+import { useNavigate } from "react-router-dom";
+
 import useLogin from "../hooks/useLogin";
 
 const LoginPage = () => {
@@ -8,6 +10,7 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+  const navigate = useNavigate(); // Add useNavigate hook
 
   // This is how we did it at first, without using our custom hook
   // const queryClient = useQueryClient();
@@ -25,7 +28,11 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    loginMutation(loginData);
+    loginMutation(loginData, {
+      onSuccess: () => {
+        navigate("/onboarding"); // Redirect to onboarding page on success
+      },
+    });
   };
 
   return (
