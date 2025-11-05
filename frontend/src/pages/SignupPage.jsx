@@ -41,7 +41,7 @@ const SignupPage = () => {
                 <div>
                   <h2 className="text-xl font-semibold">Create an Account</h2>
                   <p className="text-sm opacity-70">
-                    Join Streamify and start your language learning adventure!
+                    Join Togetia and start your language learning adventure!
                   </p>
                 </div>
 
@@ -53,7 +53,7 @@ const SignupPage = () => {
                     </label>
                     <input
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="Enter Full Name"
                       className="input input-bordered w-full"
                       value={signupData.fullName}
                       onChange={(e) => setsignupData({ ...signupData, fullName: e.target.value })}
@@ -92,7 +92,7 @@ const SignupPage = () => {
                     </p>
                   </div>
 
-                  <div className="form-control">
+                  {/* <div className="form-control">
                     <label className="label cursor-pointer justify-start gap-2">
                       <input type="checkbox" className="checkbox checkbox-sm" required />
                       <span className="text-xs leading-tight">
@@ -101,7 +101,7 @@ const SignupPage = () => {
                         <span className="text-primary hover:underline">privacy policy</span>
                       </span>
                     </label>
-                  </div>
+                  </div> */}
                 </div>
 
                 <button className="btn btn-primary w-full" type="submit">

@@ -8,7 +8,7 @@ export const signup = async (signupData) => {
 
 export const login = async (loginData) => {
   const response = await axiosInstance.post("/auth/login", loginData);
- console.log("Login response:", response.data);
+  console.log("Login response:", response.data);
   return response.data;
 };
 
@@ -18,14 +18,9 @@ export const logout = async () => {
 };
 
 export const getAuthUser = async () => {
-    const token = localStorage.getItem('authToken'); // Ensure token is stored in localStorage or cookies
-    const response = await axios.get('/api/auth/me', {
-        headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
-        },
-        withCredentials: true, // Include cookies if needed
-    });
-    return response.data;
+  const response = await axios.get('/auth/me');
+   console.log("response from getAuthUser:", response.data);
+  return response.data;
 };
 
 

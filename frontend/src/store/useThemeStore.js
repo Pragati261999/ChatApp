@@ -1,9 +1,14 @@
 import { create } from "zustand";
 
-export const useThemeStore = create((set) => ({
-  theme: localStorage.getItem("streamify-theme") || "coffee",
-  setTheme: (theme) => {
-    localStorage.setItem("streamify-theme", theme);
-    set({ theme });
-  },
-}));
+export const useThemeStore = create((set) => {
+  const initialTheme = localStorage.getItem("togetia-theme") || "coffee";
+  console.log("Initial theme:", initialTheme);
+  
+  return {
+    theme: initialTheme,
+    setTheme: (theme) => {
+      localStorage.setItem("togetia-theme", theme);
+      set({ theme });
+    },
+  };
+});
